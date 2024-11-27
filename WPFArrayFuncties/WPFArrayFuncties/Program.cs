@@ -52,21 +52,28 @@ namespace WPFArrayFuncties
 
             do
             {
-                Console.Write("Geef eerste getal: ");
-                if (!int.TryParse(Console.ReadLine(), out firstNumber) || firstNumber < 0 || firstNumber > names.Length - 1)
+                do
                 {
-                    Console.WriteLine("Geef een geldig getal");
-                }
-            } while (firstNumber == -1);
+                    Console.Write("Geef eerste getal: ");
+                    if (!int.TryParse(Console.ReadLine(), out firstNumber) || firstNumber < 0 || firstNumber > names.Length - 1)
+                    {
+                        Console.WriteLine("Geef een geldig getal");
+                        firstNumber = -1;
+                    }
+                } while (firstNumber == -1);
 
-            do
-            {
-                Console.Write("Geef eerste getal: ");
-                if (!int.TryParse(Console.ReadLine(), out secondNumber) || secondNumber < 0 || secondNumber > names.Length - 1)
+                do
                 {
-                    Console.WriteLine("Geef een geldig getal");
-                }
-            } while (secondNumber == -1);
+                    Console.Write("Geef tweede getal: ");
+                    if (!int.TryParse(Console.ReadLine(), out secondNumber) || secondNumber < 0 || secondNumber > names.Length - 1)
+                    {
+                        Console.WriteLine("Geef een geldig getal");
+                        secondNumber = -1;
+                    }
+                } while (secondNumber == -1);
+
+            } while (firstNumber + secondNumber > names.Length);
+
 
             Console.WriteLine($"Ongesorteerde array: {string.Join(", ", names)}");
             Array.Sort(names, firstNumber, secondNumber);
